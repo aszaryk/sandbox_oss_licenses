@@ -1,0 +1,5 @@
+requests>=2.21.0
+xml
+veracode-api-signing>=19.9.0
+csv
+veracode-api-py=>0.9.4
