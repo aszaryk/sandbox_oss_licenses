@@ -2,7 +2,6 @@ import sys
 import csv
 import requests
 import xml.etree.ElementTree as ET
-#import xmltodict
 from veracode_api_signing.plugin_requests import RequestsAuthPluginVeracodeHMAC
 from veracode_api_py import VeracodeAPI
 
