@@ -2,7 +2,7 @@ import sys
 import csv
 import requests
 import xml.etree.ElementTree as ET
-import xmltodict
+#import xmltodict
 from veracode_api_signing.plugin_requests import RequestsAuthPluginVeracodeHMAC
 from veracode_api_py import VeracodeAPI
 
@@ -48,22 +48,20 @@ def parseSCA(xmlFile):
             for components in vulns.findall('{https://www.veracode.com/schema/reports/export/1.0}component'):
                 csvdata = components.get("component_id") + " | " + components.get("file_name") + " | " + components.get("version") + " | " + components.get("library") + " | " + components.get("vendor") + " | " + components.get("vulnerabilities") + " | "
                 
-                cvslic = "UNRECOGNIZED"
-                
-                
-                if components.findall('{https://www.veracode.com/schema/reports/export/1.0}licenses') is not None:
-
+                license_exists = components.findall('{https://www.veracode.com/schema/reports/export/1.0}licenses')
+                if not license_exists:
+                    cvslic = "UNRECOGNIZED"
+                    f = open("cvs-lic.csv", "a", newline='')
+                    f.write(appdata+csvdata+cvslic+"\n")
+                    f.close()
+                else:
                     for licenses in components.findall('{https://www.veracode.com/schema/reports/export/1.0}licenses'):
                 
                         for lic in licenses.findall('{https://www.veracode.com/schema/reports/export/1.0}license'):
                             cvslic = lic.get("name")
-
-                else:
-                    cvslic = "UNRECOGNIZED"
-                f = open("cvs-lic.csv", "a", newline='')
-                f.write(appdata+csvdata+cvslic+"\n")
-                f.close()
-
+                            f = open("cvs-lic.csv", "a", newline='')
+                            f.write(appdata+csvdata+cvslic+"\n")
+                            f.close()
 
 def main():
 
