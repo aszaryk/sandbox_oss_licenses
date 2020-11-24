@@ -2,6 +2,8 @@
 
 Script to output OSS components and licenses from latest scan in application sandboxes in Veracode platform
 
+Uses Python3
+
 ## Setup
 
 Clone this repository:
@@ -11,7 +13,7 @@ Clone this repository:
 Install dependencies:
 
     cd sandbox_oss_licenses
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 
 (Optional) Save Veracode API credentials in `~/.veracode/credentials`
 
