@@ -26,8 +26,10 @@ Tested using Python3
 usage: get_sandbox_oss_license_info.py applist.txt
 
 NOTE:
---applist.txt is a REQUIRED text file containing application names used in parsing sandboxes. 
+--applist.txt is a REQUIRED text file containing application names used in parsing sandboxes.
+
 --Application names should be exact
+
 --spaces in application names should be encoded to %20
 
 ## Run
