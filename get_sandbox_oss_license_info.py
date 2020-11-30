@@ -13,7 +13,17 @@ def getBuilds():
     applications = application_input.read().splitlines()
 
     for app in applications:
+        
+        if app.strip() == "":
+            print ('Skipping blank input line')
+            continue
+
+        app = app.replace(" ", "%20")
+        
         rest_app_guid= VeracodeAPI().get_app_by_name(app)
+        if not rest_app_guid:
+            print ('Applicant Name: ' + app + ' Not Found')
+            continue
         
         app_name = rest_app_guid[0]['profile']['name']
         legacy_id = rest_app_guid[0]['id']
