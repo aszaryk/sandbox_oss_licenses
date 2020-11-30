@@ -33,7 +33,6 @@ NOTE:
 
 --Application names should be exact
 
---spaces in application names should be encoded to %20
 
 ## Run
 
